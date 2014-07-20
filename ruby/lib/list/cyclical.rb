@@ -20,6 +20,12 @@ module List
       end
     end
 
+    def tail
+      @tail ||= find do |node|
+        node.next_node == @head
+      end
+    end
+
     private
 
     def single_node?

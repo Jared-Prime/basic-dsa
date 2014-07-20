@@ -13,6 +13,10 @@ module List
       map(&:data)
     end
 
+    def loc(index)
+      find.with_index { |node, i| i == index }
+    end
+
     # @Listing 2.5
     def find_data(data)
       # rely on Enumerable#find, passing in our own comparison block
