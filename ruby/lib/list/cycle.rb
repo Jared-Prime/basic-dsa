@@ -1,7 +1,10 @@
-require './lib/list/linked'
+require './lib/list'
+require './lib/list/cyclical'
 
 module List
-  class Cycle < Linked
+  class Cycle
+    include Base
+    include Cyclical
 
     # The structure defining a node in a circular linked-list is identical
     # to that of a node in a simple linked-list. However, the update and remove 
@@ -9,27 +12,13 @@ module List
     # to the head, and we require a new each method to handler iterating through
     # items of the list.
     #
-    # Green, Bradley; Brewer, Jason (2013-08-12). Programming Problems in Ruby (Kindle Locations 348-350).  . Kindle Edition. 
+    # Green, Bradley; Brewer, Jason (2013-08-12). 
+    # Programming Problems in Ruby (Kindle Locations 348-350).  . Kindle Edition. 
 
-    attr_accessor :head
-
-    def initialize(node=nil)
-      @head = node
-    end
-
-    # detect loops while iterating using the Linked#each
-    def each
-      prev = nil
-      current = @head
-      while current
-        yield current
-        prev    = current
-        current = current.next_node
-        break if current == @head
-      end
-    end
-
-    # @Listing 2.8
+    # @Listing 2.8 (see Diagram)
+    # differs in that we need to update the tail's #next_node
+    # due to the fact that the head has changed. this extra work occurs in the 
+    # `else` block below
     def insert(data)
       node = Node.new data
 
@@ -45,23 +34,37 @@ module List
       @head = node
     end
 
+    # @Listing 2.10 (see Diagram)
+    # just as in the #insert method we had to ensure the tail was properly updated
+    # we have to make similar adjustments here
     def remove(data)
-      if @head.nil? || @head.next_node == @head
-        # there are zero or one nodes, so return and empty list
+      # If there's only 1 node, and it has the data, return an empty list 
+      if single_node? && @head.data == data
         @head = nil
-      elsif target = find_data(data) # find the node whose data we wish to remove
+        return
+      end
 
-        # we can only reference `:next_node`,
-        # so find the node immediately following our target
-        following = target.next_node
+      prev = find do |node|
+        # there will always be a next node, so unlike in List::Linked
+        # we do *not* need to gaurd against #next_node returning `nil`
+        node.next_node.data == data
+      end
 
-        # have our target assume the identity of its follower
-        # this enables us to preserve the linkage to the target's previous node
-        target.data = following.data
-        target.next_node = following.next_node
+      if prev
+        # we have found the node prevous to our target, and therefore our target
+        target = prev.next_node
 
-        # we need to be sure to update the head, otherwise we risk orphaning the list
-        @head = target if @head == following
+        # we also need to consider the follower of the target. this saves us in
+        # the case where we're removing the tail, which maintains a reference to
+        # the head
+        follower = target.next_node
+
+        # as in List::Linked, simply exclude the target from the list
+        # by removing its reference from its previous
+        prev.next_node = follower
+
+        # now we need to be certain to update the head
+        @head = follower if target == @head
       end
     end
   end
