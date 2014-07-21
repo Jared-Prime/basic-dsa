@@ -1,9 +1,8 @@
-require './lib/list'
+require './lib/list/common'
 require './lib/list/cyclical'
 
 module List
   class Cycle
-    include Base
     include Cyclical
 
     # The structure defining a node in a circular linked-list is identical

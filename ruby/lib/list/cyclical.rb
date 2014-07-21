@@ -1,5 +1,9 @@
+require './lib/list/common'
+
 module List
   module Cyclical
+    include Common
+
     # detect loops while iterating using the Enumerable#each
     # (see Diagram)
     def each

@@ -1,9 +1,8 @@
-require './lib/list'
+require './lib/list/common'
 require './lib/list/cyclical'
 
 module List
   class Doubled 
-    include Base
     include Cyclical
 
     # @Listing 2.12

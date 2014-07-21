@@ -1,8 +1,8 @@
-require './lib/list'
+require './lib/list/common'
 
 module List
   class Linked
-    include Base
+    include List::Common
 
     # @Listing 2.2
     # use Enumerable#each to traverse the nodes in series
