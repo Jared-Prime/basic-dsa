@@ -6,24 +6,22 @@ Basic Data Structures & Algorithms: *a study guide for the working programmer*
 
 ### Iteration over a linked list
 
-![Diagram 2.2](https://github.com/Jared-Prime/basic-dsa/collateral/diagram2.2.png)
+![Diagram 2.2](https://raw.githubusercontent.com/Jared-Prime/basic-dsa/master/collateral/Diagram%202.2.png)
 
 ### Insertion into a linked list
 
-![Diagram 2.2](https://github.com/Jared-Prime/basic-dsa/collateral/diagram2.3.png)
+![Diagram 2.3](https://raw.githubusercontent.com/Jared-Prime/basic-dsa/master/collateral/Diagram%202.3.png)
 
 ### Sorted Insertion into a linke list
 
-![Diagram 2.2](https://github.com/Jared-Prime/basic-dsa/collateral/diagram2.4.png)
-
+![Diagram 2.4](https://raw.githubusercontent.com/Jared-Prime/basic-dsa/master/collateral/Diagram%202.4.png)
 #### Base case
 
 #### Special case: replacing `@head`
 
 ### Removal from a linked list
 
-![Diagram 2.2](https://github.com/Jared-Prime/basic-dsa/collateral/diagram2.6.png)
-
+![Diagram 2.6](https://raw.githubusercontent.com/Jared-Prime/basic-dsa/master/collateral/Diagram%202.6.png)
 #### Base case
 
 #### Special case: removing `@head`
