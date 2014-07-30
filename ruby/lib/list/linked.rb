@@ -1,3 +1,4 @@
+require './lib/list/node'
 require './lib/list/common'
 
 module List
