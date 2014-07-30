@@ -1,7 +1,7 @@
-require './lib/queue/queue'
-require './lib/queue/node'
+require './lib/queue'
+require './lib/node'
 
-describe Queue::Queue do
+describe Queue do
   subject { described_class.new }
 
   describe '.initialize' do

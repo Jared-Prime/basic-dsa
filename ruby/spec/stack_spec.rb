@@ -1,6 +1,6 @@
-require './lib/stack/stack'
+require './lib/stack'
 
-describe Stack::Stack do
+describe Stack do
   subject{ described_class.new }
 
   describe '.initialize' do

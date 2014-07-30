@@ -1,3 +1,5 @@
+require './lib/node'
+
 module List
   module Common
     include Enumerable

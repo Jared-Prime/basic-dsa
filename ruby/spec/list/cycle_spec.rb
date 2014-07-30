@@ -1,6 +1,5 @@
 require 'pry'
 require './lib/list/cycle'
-require './lib/list/node'
 
 describe List::Cycle do
   subject { described_class.new }
@@ -32,7 +31,7 @@ describe List::Cycle do
     it 'returns the node matching the data' do
       subject.insert 'Bob'
       found_node = subject.find_data 'Bob'
-      expect(found_node).to be_a List::Node
+      expect(found_node).to be_a Node
       expect(found_node.data).to eq 'Bob'
       expect(found_node.next_node.data).to eq 'Alice'
     end

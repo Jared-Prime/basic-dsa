@@ -1,4 +1,3 @@
-require './lib/list/node'
 require './lib/list/common'
 
 describe List::Common do
@@ -15,16 +14,16 @@ describe List::Common do
     end
     BasicList.new node1
   end
-  let(:node1){ List::Node.new 'Alice', node2 }
-  let(:node2){ List::Node.new 'Bob', node3 }
-  let(:node3){ List::Node.new 'Carol', node4 }
-  let(:node4){ List::Node.new 'Dave', node5 }
-  let(:node5){ List::Node.new 'Erin', node6 }
-  let(:node6){ List::Node.new 'Frank', node7 }
-  let(:node7){ List::Node.new 'Georgette', node8 }
-  let(:node8){ List::Node.new 'Hannah', node9 }
-  let(:node9){ List::Node.new 'Isaac', node10 }
-  let(:node10){ List::Node.new 'Jared', nil }
+  let(:node1){ Node.new 'Alice', node2 }
+  let(:node2){ Node.new 'Bob', node3 }
+  let(:node3){ Node.new 'Carol', node4 }
+  let(:node4){ Node.new 'Dave', node5 }
+  let(:node5){ Node.new 'Erin', node6 }
+  let(:node6){ Node.new 'Frank', node7 }
+  let(:node7){ Node.new 'Georgette', node8 }
+  let(:node8){ Node.new 'Hannah', node9 }
+  let(:node9){ Node.new 'Isaac', node10 }
+  let(:node10){ Node.new 'Jared', nil }
 
   describe '#midpoint' do
     it 'returns the middle' do

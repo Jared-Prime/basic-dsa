@@ -1,6 +1,5 @@
 require 'pry'
 require './lib/list/doubled'
-require './lib/list/node'
 
 describe List::Doubled do
   subject{ described_class.new }
