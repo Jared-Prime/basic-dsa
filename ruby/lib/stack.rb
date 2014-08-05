@@ -1,22 +1,26 @@
-require './lib/list/linked'
+require './lib/node'
 
 class Stack
-  attr_reader :contents
+  attr_accessor :top
 
   def initialize
-    @contents = List::Linked.new
+    @top = nil
   end
 
   def push(data)
-    @contents.insert(data)
+    node = Node.new data
+    node.next_node = @top
+    @top = node
   end
 
-  def head
-    @contents.head
+  def pop
+    return if empty?
+    data = @top.data
+    @top = @top.next_node
+    return data
   end
-  alias_method :peek, :head
 
   def empty?
-    head == nil
+    @top == nil
   end
 end
