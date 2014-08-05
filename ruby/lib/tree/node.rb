@@ -1,9 +1,9 @@
 module Tree
   class Node
-    attr_accessor :data, :left, :right
+    attr_accessor :data, :left_branch, :right_branch
 
-    def initialize(data, left=nil, right=nil)
-      @data, @left, @right = data, left, right
+    def initialize(data, left_branch=nil, right_branch=nil)
+      @data, @left_branch, @right_branch = data, left_branch, right_branch
     end
   end
 end
