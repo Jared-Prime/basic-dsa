@@ -37,12 +37,34 @@ module Tree
 
       # Green, Bradley; Brewer, Jason (2013-08-12). 
       # Programming Problems in Ruby (Kindle Locations 866-868). 
+      target = find(data)
+
+      return nil unless target
+      return find_successor_on_right(target) || find_successor_on_left(target)
     end
 
     private
 
+    def find_successor_on_right(target)
+      if successor = target.right_branch
+        while successor.left_branch
+          successor = successor.left_branch
+        end
+        return successor
+      end
+    end
+
+    def find_successor_on_left(target)
+      successor = nil
+      begin
+        target = successor if successor
+        successor = find_parent target.data
+      end while successor && successor.right_branch == target
+      return successor
+    end
+
     def find_parent_node(node, data)
-      if node.left_branch  && data == node.left_branch.data
+      if node.left_branch && data == node.left_branch.data
         return node
       elsif node.right_branch && data == node.right_branch.data
         return node

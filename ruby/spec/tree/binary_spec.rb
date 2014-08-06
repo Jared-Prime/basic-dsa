@@ -65,7 +65,24 @@ describe Tree::Binary do
     end
   end
 
-  describe '#find_successor'
+  describe '#find_successor' do
+    before :each do
+      subject.insert 20
+      subject.insert 10
+      subject.insert 5
+      subject.insert 15
+      subject.insert 30
+      subject.insert 25
+      subject.insert 35
+    end
+
+    it 'returns the successor node' do
+      expect(subject.find_successor(10).data).to be 15
+      expect(subject.find_successor(20).data).to be 25
+      expect(subject.find_successor(30).data).to be 35
+      expect(subject.find_successor(35)).to be_nil
+    end
+  end
 
   describe '#find' do
     before :each do
