@@ -11,17 +11,19 @@ module Graph
           frontier.push root_vertex
 
           loop do
-            yield if block_given?
-
-            return nil if frontier.empty?
+            break if frontier.empty?
 
             current = frontier.pop
+
+            yield current if block_given?
             return current if current.data == target_data
 
             current.neighbors.each do |neighbor|
               frontier.push neighbor unless explored.include? neighbor
             end
           end
+
+          raise 'Not in graph'
         end
       end
     end
